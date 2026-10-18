@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * A class to hold details of audio files.
@@ -130,6 +131,29 @@ public class MusicOrganizer
             System.out.println("No files matched the search term: " + searchString);
         }
     }
+    // Question 1 - Practice 5 Part IV
+    public void playRandom()
+    {
+        if (files.isEmpty()) {
+            System.out.println("No songs");
+            return;
+        }
+        Random random = new Random();
+        int index = random.nextInt(files.size());
+        System.out.println(files.get(index));
+    }
+
+    // Question 3 - Practice 5 Part IV
+    public void playAllRandom()
+    {
+        ArrayList<String> remaining = new ArrayList<>(files);
+        Random random = new Random();
+        while (!remaining.isEmpty()) {
+            int index = random.nextInt(remaining.size());
+            System.out.println(remaining.get(index));
+            remaining.remove(index);
+        }
+    }
 }
 //question 4
 // Header: public void listAllFiles()
@@ -138,3 +162,6 @@ public class MusicOrganizer
 
 //question 5
 // You would need an infinite number of statements. Without a loop, you cannot handle a list whose size changes.
+
+// Question 2 - Practice 5 Part IV
+// I would play every song once before repeating any. A play count could help track plays.
